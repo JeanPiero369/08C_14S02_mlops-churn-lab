@@ -41,7 +41,9 @@ jobs:
             exit 1
           fi
           echo "Usando artefactos de la corrida $RUN_ID"
-          gh run download "$RUN_ID" --name production-artifacts --dir .
+          # gh no sobrescribe archivos: se descarga aparte y se copia encima del checkout
+          gh run download "$RUN_ID" --name production-artifacts --dir "$RUNNER_TEMP/prod"
+          cp -r "$RUNNER_TEMP/prod/." .
 
       - name: Ejecutar monitor
         id: monitor
