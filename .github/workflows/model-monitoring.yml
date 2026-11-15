@@ -1,0 +1,15 @@
+- name: Ejecutar monitor
+  id: monitor
+  run: |
+    set +e
+    python src/monitor.py --scenario "${{ inputs.scenario || 'none' }}" --fail-on-retrain
+    CODE=$?
+    set -e
+    echo "exit_code=$CODE" >> $GITHUB_OUTPUT
+    if [ $CODE -ne 0 ] && [ $CODE -ne 42 ]; then exit $CODE; fi
+
+- name: Disparar reentrenamiento (Continuous Training)
+  if: steps.monitor.outputs.exit_code == '42'
+  run: |
+    echo "El monitor pidió reentrenar: se dispara mlops.yml"
+    gh workflow run mlops.yml --ref "${{ github.ref_name }}"

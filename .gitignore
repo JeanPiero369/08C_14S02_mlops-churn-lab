@@ -89,3 +89,11 @@ infra/terraform.tfstate.d/
 
 slides_CRISP_DM_Churn.html
 docs/slides_MLOps_Churn.html
+logs/
+
+
+infra/.terraform/
+infra/terraform.tfstate*
+infra/terraform.tfstate.d/
+infra/registry/.terraform*
+infra/registry/terraform.tfstate*
