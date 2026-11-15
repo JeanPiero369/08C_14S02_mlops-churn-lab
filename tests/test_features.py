@@ -13,6 +13,7 @@ def _fitted_pipeline():
     return build_pipeline(LogisticRegression(max_iter=500), cfg).fit(X, y), X
 
 
+
 def test_pipeline_accepts_raw_columns():
     pipeline, X = _fitted_pipeline()
     proba = pipeline.predict_proba(X.head(5))[:, 1]
