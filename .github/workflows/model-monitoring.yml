@@ -1,7 +1,7 @@
 name: Model Monitoring - Churn Predictor
 
 # CRISP-ML(Q) fase 6: monitoreo programado. Si el monitor decide REENTRENAR
-# (exit 42), dispara el pipeline completo: eso es Continuous Training.
+# (exiat 42), dispara el pipeline completo: eso es Continuous Training.
 
 on:
   schedule:
